@@ -16,8 +16,12 @@ namespace GradeBook.GradeBooks
 
             if(Students.Count <= 5)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Ranked Grading only available for 5 or more students.");
             }
+
+            var threshold = (int)Math.Ceiling(Students.Count * 0.20);
+            // The following is in LINQ 
+            var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
 
             // Find Highest and Lowest Grade
             var highestGrade = double.MinValue;
