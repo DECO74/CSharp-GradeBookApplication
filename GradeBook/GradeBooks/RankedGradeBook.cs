@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using GradeBook.Enums;
 
 namespace GradeBook.GradeBooks
@@ -19,18 +20,26 @@ namespace GradeBook.GradeBooks
                 throw new InvalidOperationException("Ranked Grading only available for 5 or more students.");
             }
 
-            var threshold = (int)Math.Ceiling(Students.Count * 0.20);
+            var threshold = (int) Math.Ceiling(Students.Count * 0.20);
             // The following is in LINQ Language
             var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
             if(grades[threshold - 1] <= averageGrade)
+            {
                 return 'A';
-            else if(grades[(threshold * 2) -1])
+            }
+            else if(grades[(threshold * 2) - 1] <= averageGrade)
+            {
                 return 'B';
-            else if(grades[(threshold * 3) -1])
-            
-            else if(grades[(threshold * 4) -1])
+            }
+            else if(grades[(threshold * 3) - 1] <= averageGrade)
+            {
+                return 'C';
+            }
+            else if(grades[(threshold * 4) - 1] <= averageGrade)
+            {
                 return 'D';
-            else
+            }
+                
                 return 'F';
 
             // // Find Highest and Lowest Grade
