@@ -15,7 +15,7 @@ namespace GradeBook.GradeBooks
         {
             int rankDivider = (Students.Count * 20) / 100; 
 
-            if(Students.Count <= 5)
+            if(Students.Count < 5)
             {
                 throw new InvalidOperationException("Ranked Grading only available for 5 or more students.");
             }
