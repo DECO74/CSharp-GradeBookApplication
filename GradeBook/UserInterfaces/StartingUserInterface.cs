@@ -52,12 +52,14 @@ namespace GradeBook.UserInterfaces
             }
             else
             {
-
+                System.Console.WriteLine($"{parts[3]} is not a valid option.");
+                return;
             }
             BaseGradeBook gradeBook;
             switch(type)
             {
                 case "standard":
+                    gradeBook = new StandardGradeBook(name, isWeighted);
                     gradeBook = new StandardGradeBook(name, isWeighted);
                     break;
                 case "ranked":
