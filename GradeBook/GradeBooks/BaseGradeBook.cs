@@ -126,6 +126,7 @@ namespace GradeBook.GradeBooks
                     break;
                 case 'F':
                     gpa = 0;
+                    break;
             }
             if(IsWeighted == true && (studentType == StudentType.Honors || studentType == StudentType.DualEnrolled))
             {
